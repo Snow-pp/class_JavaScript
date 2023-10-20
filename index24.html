@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <button onclick="runOrderCoffee2('녹차')">Promise Callback Test</button>
+    <script>
+        // 커피를 주문하고 만드는 비동기 함수 만들어보기
+        // orderCoffee ---> Promise 타입 반환하는 함수
+        function orderCoffee(order) {
+            return new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                    if(order === '아메리카노') {
+                        resolve('아메리카노 나왔습니다.');
+                    } else if(order === '라떼') {
+                        resolve('라떼 나왔습니다.')
+                    } else {
+                        reject('죄송합니다. 오늘 재료가 모두 소진되었습니다.')
+                    }
+                }, 1000);
+            });
+        }
+
+        // 1. 소화, 소비 시키는 방법 -> async await를 사용하여 비동기 코드를 간결하게 처리할 수 있다.
+        // async : 비동기 함수임을 알린다
+        async function runOrderCoffee1(order) {
+            console.log('start ...');
+            try {
+                // Promise 타입을 담는다
+                const result = await orderCoffee(order); // 대기, 이행, 거절
+            } catch(error) {
+                console.error(error);
+            }
+            console.log('end ...');
+        }
+
+        // 2. 콜백 메서드를 활용할 수 있다.
+        function runOrderCoffee2(order) {
+            console.log('start ...');
+            orderCoffee(order).then((message) => {
+                console.log('message : ' + message);
+            }).catch((error) => {
+                console.error(error);
+            })
+
+            console.log('end ...');
+        }
+
+    </script>
+</body>
+</html>

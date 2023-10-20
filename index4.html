@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const person = {
+            firstName: '길동',
+            lastName: '홍',
+            age: 30,
+            address: {
+                street: '연수로 123번길',
+                city: '부산',
+                zip: '488123'
+            },
+            hobbies: ['독서', '등산', '요리', '코딩'], // 배열
+            sayHello: function() {
+                // 주의 : 백틱(backtick) 또는 역따옴표(backquote) 사용
+                console.log(`Hello, my name is ${this.firstName} ${this.lastName}.`); // ES6 - 템플릿 리터럴 -> ${}
+            }
+        };
+
+        // 객체 속성에 접근
+        console.log(person.firstName); // 길동
+        console.log(person.age); // 30
+        
+        // 중첩된 객체 속성에 접근
+        console.log(person.address.city); // 부산
+
+        // 배열 속성에 접근
+        console.log(person.hobbies[0]); // 독서
+
+        // 메서드 호출
+        person.sayHello(); // Hello, my name is 길동 홍.
+
+        // 객체에 속성 추가
+        person.email = 'john@example.com';
+
+        // 객체 속성 수정
+        person.age = 31;
+
+        // 객체 속성 삭제
+        delete person.hobbies;
+        console.log(person.hobbies); // undefined
+    </script>
+</body>
+</html>

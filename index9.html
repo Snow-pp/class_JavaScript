@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 일반 함수 표현식
+        const obj1 = {
+            value: 42,
+            getValue: function() {
+                return this.value;
+            }
+        };
+
+        // 화살표 함수 선언
+        const obj2 = {
+            value: 42,
+            getValue: () => {
+                return this.value; // 여기서 this는 전역 스코프를 가리킴
+            }
+        };
+
+        console.log(obj1.getValue()) // 42
+        console.log(obj2.getValue()); // undefined (전역 스코프에 value라는 변수가 선언되어 있지 않다)
+
+    </script>
+</body>
+</html>

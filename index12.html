@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv">아이디로 접근</div>
+    <div class="myClass">클래스 이름으로 접근 1</div>
+    <div class="myClass">클래스 이름으로 접근 2</div>
+    <p>태그 이름으로 접근 1</p>
+    <p>태그 이름으로 접근 2</p>
+
+    <script>
+        // getElementById Example
+        let byId = document.getElementById("myDiv");
+        console.log(byId.textContent); // 출력 : 아이디로 접근
+
+        // getElementsByClassName Example
+        let byClassName = document.getElementsByClassName("myClass");
+        console.log(byClassName[0].textContent); // 출력 : 클래스 이름으로 접근 1
+
+        // getElementsByTagName Example
+        let byTagName = document.getElementsByTagName("p");
+        console.log(byTagName[1].textContent); // 출력 : 태그 이름으로 접근 2
+
+        /**
+         * querySelector Example
+         * 제공된 CSS 선택자와 일치하는 문서 내 첫 번째 엘리먼트를 반환합니다.
+         * 즉, 선택자와 일치하는 여러 엘리먼트가 있더라도 가장 상위에 있는 첫 번째 엘리먼트만 반환합니다.
+         * 만약 일치하는 엘리먼트가 없다면 null을 반환합니다.
+         */
+        let byQuerySelector = document.querySelector(".myClass");
+        console.log(byQuerySelector.textContent); // 출력 : 클래스 이름으로 접근 1
+
+
+        // querySelectorAll Example
+        /**
+         * 택자와 일치하는 문서 내 모든 엘리먼트를 NodeList로 반환합니다
+         */
+        let byQuerySelectorAll = document.querySelectorAll(".myClass");
+        console.log(byQuerySelectorAll); // 출력 : NodeList(2) [div.myClass, div.myclass]
+        console.log(byQuerySelectorAll[1].textContent); // 출력 : 클래스 이름으로 접근 2
+    </script>
+</body>
+</html>

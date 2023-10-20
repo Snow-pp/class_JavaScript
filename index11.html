@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">Hello, World</h1>
+    <button id="changeButton">Change Text</button>
+</body>
+<script>
+    // 자바스크립트를 사용하여 DOM을 조작
+	// 'changeButton' 아이디를 가진 요소를 가져온다. 이 경우 버튼 요소이다.
+    let changeBtn = document.getElementById("changeButton");
+
+    // 버튼 클릭시 호출될 함수를 정의
+    let clickEvent = function() {
+        let titleElement = document.getElementById("title"); // id로 title을 가진 요소를 가져온다.
+        titleElement.textContent = "Hello JavaScript";
+        titleElement.style.color = "blue";
+    };
+
+    // 이벤트 리스터 등록 및 이벤트 핸들러 처리
+    // 'changeButton' 버튼에 클릭 이벤트 리스너를 추가. 버튼이 클릭되면 'clickEvent' 함수가 실행된다.
+    changeBtn.addEventListener("click", clickEvent);
+
+    // 아래 코드는 위의 코드를 한번에 작성한 것
+    // 'changeButton' 아이디를 가진 버튼에 클릭 이벤트 리스너를 추가한다.
+    // 버튼이 클릭되면 익명 함수가 호출되어 'title' 아이디를 가진 <h1> 요소의 텍스트와 색상을 변경합니다.
+    document.getElementById("title").addEventListener("click", function() {
+        let titleElement = document.getElementById("title");
+        titleElement.textContent = "안녕 반가워 JS";
+        titleElement.style.color = "green";
+    });
+
+</script>
+</html>

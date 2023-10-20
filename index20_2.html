@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<ul id="myList">
+			<li><button>버튼 1</button></li>
+			<li><button>버튼 2</button></li>
+			<li><button>버튼 3</button></li>
+		</ul>
+
+		<script>
+			// 각 버튼에 개별적으로 이벤트 리스너를 추가
+			// document.querySelectorAll("#myList button").forEach((button) => {
+			// 	button.addEventListener("click", function () {
+			// 		alert("버튼 클릭!");
+			// 	});
+			// });
+
+            // button 들의 부모 요소 li --> ul
+            document.getElementById("myList").addEventListener("click", function(e) {
+                // 1단계 확인
+				// if (e.target.tagName === "BUTTON") {
+				// 	alert("버튼 클릭!");
+				// }
+
+                // 2단계 인수값에 대한 이해
+                console.log(e);
+                console.log(e.target);
+                console.log(e.target.innerText);
+
+                // 3단계 코드 활용
+                if(e.target.innerText === "버튼 1") {
+                    // 동작 정의
+                    alert("버튼 1");
+                } else if(e.target.innerText === "버튼 2") {
+                    alert("버튼 2");
+                } else if(e.target.innerText === "버튼 3") {
+                    alert("버튼 3");
+                } 
+            });
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        span {
+            margin-right: 10px;
+        }
+        .like-heart {
+            font-size: 40px;
+            color: gray;
+            cursor: pointer;
+            transition: color 1s ease, transform 1s ease;
+        }
+        .like-heart.liked {
+            color: red;
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <span class="like-heart" onclick="likeToggle(this)">&#10084;</span>
+    <span class="like-heart" onclick="likeToggle(this)">&#10084;</span>
+    <span class="like-heart" onclick="likeToggle(this)">&#10084;</span>
+
+    <script>
+        function likeToggle(element) {
+            // let likeHeart = document.querySelector(".like-heart");
+            // likeHeart.style.fontSize = "50px";
+            element.classList.toggle("liked");
+        }
+    </script>
+</body>
+</html>

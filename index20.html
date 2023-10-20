@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            margin: 16px;
+            justify-content: center;
+            flex-direction: column;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            margin: 8px 0;
+            padding: 8px;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            width: 100px;
+            height: 100px;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>EventListener를 사용한 CRUD와 토글</h2>
+        <button id="addBtn">아이템 추가</button>
+        <button id="toggleBtn">리스트 토글</button>
+        <ul id="myList">
+            <li>
+                아이템1
+                <button class="editBtn">수정하기</button>
+                <button class="deleteBtn">삭제하기</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        let count = 1;
+        // 아이템 추가 기능
+        document.getElementById("addBtn").addEventListener("click", function() {
+            count++;
+            // 새로운 li 요소를 생성합니다.
+            let newItem = document.createElement("li");
+            // 백틱(``)을 사용하여 새로운 li 요소의 내용을 설정합니다.
+            // 아이템에는 수정하기와 삭제하기 버튼이 포함됩니다.
+            newItem.innerHTML = `아이템 ${count} <button class="editBtn">수정하기</button> <button class="deleteBtn">삭제하기</button>`;
+            // "myList"라는 ID를 가진 ul 요소에 새로운 li 요소를 추가합니다.
+            document.getElementById("myList").append(newItem);
+        });
+
+        // 리스트 토글 기능
+        // "toggleBtn"이라는 ID를 가진 요소에 클릭 이벤트 리스너를 추가합니다.
+        document.getElementById("toggleBtn").addEventListener("click", function () {
+            // "myList"라는 ID를 가진 ul 요소를 선택합니다.
+            let list = document.getElementById("myList");
+            // 리스트의 display 스타일을 토글합니다. 보이면 숨기고, 숨겨져있으면 보이게 합니다.
+            list.style.display = list.style.display === "none" ? "" : "none";
+        });
+    </script>
+</body>
+</html>

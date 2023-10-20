@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex--container {
+            display: flex;
+        }
+        .box {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>노드 숨기기</h1>
+    <div class="flex--container">
+        <button onclick="hideDisplay()">display로 숨기기</button>
+        <button onclick="hideVisible()">visible로 숨기기</button>
+
+        <!-- box 클래스를 가진 div 요소. 내부에 두개의 내부 박스가 있다. -->
+        <div class="box">
+            <div class="box" id="innerBox1">내부박스 1</div>
+            <div class="box" id="innerBox2">내부박스 2</div>
+        </div>
+    </div>
+
+    <script>
+        function hideDisplay() {
+            let el = document.querySelector("#innerBox1");
+            el.style.display = "none"; // display 속성을 none으로 설정하여 요소 숨기기
+        }
+
+        function hideVisible() {
+            let el = document.querySelector("#innerBox2");
+            el.style.visibility = "hidden"; // visibility 속성을 hidden으로 설정하여 요소 숨기기
+        }
+    </script>
+</body>
+</html>

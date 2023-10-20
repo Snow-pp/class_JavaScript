@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container {
+            display: flex;
+            height: 200px;
+            /* 이미지가 벗어나는 부분 숨기기 */
+            overflow: hidden;
+        }
+
+        .flex-item {
+            flex: 1;
+            /* flex-item 공간 크기를 1로 설정  */
+            display: flex;
+            /* flex-item 의 속성도 flex 로 만들기 */
+            justify-content: center;
+            position: relative;
+        }
+
+        .flex-item img {
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .flex-item img.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .flex-item:nth-child(2) {
+            flex: 8;
+            /* 중간 이미지는 8배의 크기로 */
+        }
+
+        .button {
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="flex-item">
+            <button class="button prev-btn">prev</button>
+        </div>
+        <div class="flex-item">
+            <img class="active" src="/images/image1.png" alt="Image 1">
+            <img src="/images/image2.png" alt="Image 2">
+            <img src="/images/image3.png" alt="Image 3">
+        </div>
+        <div class="flex-item">
+            <button class="button next-btn">next</button>
+        </div>
+    </div>
+    <script>
+        let images = document.querySelectorAll(".flex-item img");
+        let currentIndex = 0;
+
+        // 이미지 자동 변경 함수
+        function autoRotate() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        // 2초(2000ms) 마다 autoRotate 함수 호출
+				// setInterval 함수를 호출하는 부분입니다.
+        // setInterval 함수는 특정 함수를 주어진 시간 간격마다 반복해서 실행합니다.
+        let autoRotateInterval = setInterval(autoRotate, 2000);
+
+        document.querySelector('.prev-btn').addEventListener('click', function () {
+						// setInterval로 시작된 주기적인 작업을 중지하기 위해 사용
+            clearInterval(autoRotateInterval);
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+            autoRotateInterval = setInterval(autoRotate, 2000);  // 재시작
+        });
+
+        document.querySelector('.next-btn').addEventListener('click', function () {
+            clearInterval(autoRotateInterval);
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+            autoRotateInterval = setInterval(autoRotate, 2000);  // 재시작
+        });
+
+    </script>
+</body>
+
+</html>

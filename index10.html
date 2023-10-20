@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 자바스크립트를 통해 DOM에 노드를 동적으로 추가합니다 -->
+</body>
+<script>
+    // div 요소 생성하기
+    let div = document.createElement("div");
+    console.log(div);
+
+    // 생성된 div 요소를 body의 자식 노드로 추가
+    document.body.append(div);
+
+    // div 안에 텍스트 내용 넣기
+    div.textContent = "div 노드를 붙였습니다.";
+
+    // 생성된 자식 노드(div)의 스타일 변경
+    div.style.backgroundColor = "yellow";
+</script>
+</html>

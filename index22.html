@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Flexbox 레이아웃을 시작 */
+            flex-direction: column; /* 주축 방향을 가로 --> 세로로 변경 (Flexbox의 방향을 세로로 설정) */
+            /* 주측 방향 자식 요소 정렬 */
+            /* justify-content: flex-end; */
+            align-items: center; /* 횡단측에 아이템 정렬 (가운데 정렬) */
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px 20px;
+            margin: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #45a045;
+        }
+
+        .container {
+            display: flex; /* Flexbox 레이아웃을 시작합니다. */
+            flex-wrap: wrap; /* 요소들이 컨테이너를 벗어나면 다음 줄로 이동합니다. */
+            padding: 20px;
+            width: 80%;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* x, y, blur-radius, rgba */
+            /* 부모 요소의 크기에 1 만큼 차지하라  2개 - 1 : 1 , 3개 1: 1 : 1  */
+            flex: 1;
+            min-width: calc(33.33% - 20px); /* 카드의 최소 너비를 설정 */
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Create List with Loop</h1>
+    <button onclick="render()">Render</button>
+    <div class="container" id="container">
+        <!-- 자바스크립트로 변경 예정 -->
+        
+    </div>
+
+    <script>
+        let count = 0; // 카드의 title에 고유한 id값 생성하기 위한 변수        
+
+        function render() {
+            const container = document.getElementById("container");
+            // 반복문을 통해서 div 만들어 주세요
+            for (let i = 1; i <= 3; i++) {
+                count++;
+                const card = createCard(count);
+                container.append(card);
+            }
+        }
+
+        function createCard(id) {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.id = "card-" + id;
+            card.innerHTML = `<h2>Title ${id}</h2>
+                            <p>Content ${id}</p>
+                            <button onclick="deleteCard(${id})">Delete</button>`;
+            return card;
+        }
+
+        function deleteCard(id) {
+            const card = document.getElementById("card-" + id);
+            if (card != null) {
+                card.remove();
+            }
+        }
+    </script>
+
+</body>
+</html>

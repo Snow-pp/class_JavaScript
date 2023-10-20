@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Remove Elements Dynamically</title>
+		<style>
+			ul {
+				list-style-type: none;
+				padding: 0;
+			}
+
+			li {
+				background-color: #f9f9f9;
+				margin: 8px 0;
+				padding: 8px;
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>요소를 동적으로 삭제하기</h1>
+		<button onclick="removeItem()">아이템 삭제</button>
+
+		<ul id="myList">
+			<!-- 아이템이 추가될 목록 -->
+			<li>아이템 1</li>
+			<li>아이템 2</li>
+		</ul>
+
+		<script>
+			function removeItem() {
+				// myList id를 가진 ul 요소를 선택합니다.
+				let list = document.querySelector("#myList");
+
+				// ul 요소의 마지막 자식을 선택합니다.
+				let lastChild = list.lastElementChild;
+
+				// 마지막 자식이 있을 경우, 삭제합니다.
+				if (lastChild) {
+					// 주의!!
+					// list.remove(); 해당 요소를 직접 제거
+					list.removeChild(lastChild); // 부모 노드에서 특정 자식 노드를 제거하는 형태로 사용 됩니다.
+				} else {
+					alert("더 이상 삭제할 아이템이 없습니다.");
+				}
+			}
+		</script>
+	</body>
+</html>

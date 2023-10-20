@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 태그가 block 요소인지 inline 요소인지 확인하자 */
+        .flex--container {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex--container">
+        <img id="myImage" src="images/image1.png" alt="img1" width="300px" height="500px">
+        <button onclick="toggleImage()">이미지 토글</button>
+    </div>
+    <script>
+        function toggleImage() {
+            let imageNode = document.getElementById("myImage");
+            if (imageNode.src.includes("image1.png")) {
+                imageNode.src = "images/image2.png";
+            } else {
+                imageNode.src = "images/image1.png";
+            }
+        }
+    </script>
+</body>
+</html>
